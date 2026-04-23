@@ -1,0 +1,159 @@
+import asyncio
+from deriv_api import DerivAPI
+
+# --- CONFIGURATION ---
+MY_APP_ID = '132104' 
+MY_TOKEN = 'LFEbvxMs11TzSfp' 
+
+async def run_bot():
+    api = DerivAPI(app_id=MY_APP_ID)
+    try:
+        print("Connecting to Deriv...")
+        await api.authorize(MY_TOKEN)
+        print("Authorized Successfully!")
+
+        while True:
+            proposal = {
+                "buy": 1,
+                "price": 0.35,
+                "parameters": {
+                    "amount": 0.35,
+                    "basis": "stake",
+                    "contract_type": "DIGITOVER",
+                    "currency": "USD",
+                    "duration": 1,
+                    "duration_unit": "t",
+                    "barrier": "5",
+                    "symbol": "1HZ100V"
+                }
+            }
+            
+            try:
+                print("Sending Trade...")
+                await api.buy(proposal)
+                print("Trade placed!")
+                await asyncio.sleep(12)
+                
+                res = await api.statement({"limit": 1})
+                profit = res['statement']['transactions'][0]['amount']
+                print(f"Result: {profit}")
+                
+            except Exception as trade_err:
+                print(f"Trade failed: {trade_err}")
+                await asyncio.sleep(5)
+
+    except Exception as auth_err:
+        print(f"Auth Error: {auth_err}")
+    finally:
+        await api.disconnect()
+
+if __name__ == '__main__':
+    asyncio.run(run_bot())
+
+
+rm bot.py
+rm bot.py
+import asyncio
+from deriv_api import DerivAPI
+
+# --- CONFIGURATION ---
+MY_APP_ID = '132104' 
+MY_TOKEN = 'LFEbvxMs11TzSfp' 
+
+async def run_bot():
+    api = DerivAPI(app_id=MY_APP_ID)
+    try:
+        print("Connecting to Deriv...")
+        await api.authorize(MY_TOKEN)
+        print("Authorized Successfully!")
+
+        while True:
+            proposal = {
+                "buy": 1,
+                "price": 0.35,
+                "parameters": {
+                    "amount": 0.35,
+                    "basis": "stake",
+                    "contract_type": "DIGITOVER",
+                    "currency": "USD",
+                    "duration": 1,
+                    "duration_unit": "t",
+                    "barrier": "5",
+                    "symbol": "1HZ100V"
+                }
+            }
+            
+            try:
+                print("Sending Trade...")
+                await api.buy(proposal)
+                print("Trade placed!")
+                await asyncio.sleep(12)
+                
+                res = await api.statement({"limit": 1})
+                profit = res['statement']['transactions'][0]['amount']
+                print(f"Result: {profit}")
+                
+            except Exception as trade_err:
+                print(f"Trade failed: {trade_err}")
+                await asyncio.sleep(5)
+
+    except Exception as auth_err:
+        print(f"Auth Error: {auth_err}")
+import asyncio
+from deriv_api import DerivAPI
+
+# --- CONFIGURATION ---
+MY_APP_ID = '132104' 
+MY_TOKEN = 'LFEbvxMs11TzSfp' 
+
+async def run_bot():
+    api = DerivAPI(app_id=MY_APP_ID)
+    try:
+        print("Connecting...")
+        await api.authorize(MY_TOKEN)
+        print("Authorized!")
+
+        while True:
+            proposal = {
+                "buy": 1,
+                "price": 0.35,
+                "parameters": {
+                    "amount": 0.35,
+                    "basis": "stake",
+                    "contract_type": "DIGITOVER",
+                    "currency": "USD",
+                    "duration": 1,
+                    "duration_unit": "t",
+                    "barrier": "5",
+                    "symbol": "1HZ100V"
+                }
+            }
+            
+            try:
+                print("Sending Trade...")
+                await api.buy(proposal)
+                print("Trade placed!")
+                await asyncio.sleep(12)
+                
+                res = await api.statement({"limit": 1})
+                profit = res['statement']['transactions'][0]['amount']
+                print(f"Result: {profit}")
+                
+            except Exception as trade_err:
+                print(f"Trade failed: {trade_err}")
+                await asyncio.sleep(5)
+
+    except Exception as auth_err:
+        print(f"Auth Error: {auth_err}")
+    finally:
+        await api.disconnect()
+
+if __name__ == '__main__':
+    asyncio.run(run_bot())
+    finally:
+        await api.disconnect()
+
+if __name__ == '__main__':
+    asyncio.run(run_bot())
+
+
